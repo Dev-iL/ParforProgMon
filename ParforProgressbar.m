@@ -272,9 +272,9 @@ function draw_progress_bar(~, ~, o)
         EstWorkPerWorker = o.totalIterations / numWorkers;
         progWorker = double(o.workerTable.progress) / EstWorkPerWorker;
         progWorkerC = mat2cell(progWorker,ones(1,length(progWorker)));
-        progressbar(progressTotal, progWorkerC{:});
+        progressbar(min(1,progressTotal + eps(progressTotal)), progWorkerC{:});
     else
-        progressbar(progressTotal);
+        progressbar(min(1,progressTotal + eps(progressTotal)));
     end
 end
 
